@@ -111,7 +111,8 @@ motion2L = [ScreenImg(f"motion2L/img/11zon_{i}.jpeg") for i in range(5,15+1)]
 motion2R = [ScreenImg(f"motion2R/img/11zon_{i}.jpeg") for i in range(5,15+1)]
 motion3L = [ScreenImg(f"motion3L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
 motion3R = [ScreenImg(f"motion3R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion4 = [ScreenImg(f"motion4/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion4L = [ScreenImg(f"motion4L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion4R = [ScreenImg(f"motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
 motion5 = [ScreenImg(f"motion5/img/11zon_{i}.jpeg") for i in range(1,64+1)]
 out = [ScreenImg(f"out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
 
@@ -161,6 +162,8 @@ while(running1):
 
 dancingType = 1
 toggle = False
+isAlreadyOut = False
+dType3Dir = 1
 
 while(running2):
     #select dancing type
@@ -168,6 +171,7 @@ while(running2):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
                 dancingType = 1
+
             elif event.key == pygame.K_2:           
                 dancingType = 2
 
@@ -184,11 +188,14 @@ while(running2):
                 dancingType = 6
 
             elif event.key == pygame.K_SPACE:
+                isAlreadyOut = True
                 dancing(out)
 
         #stop arisu dancing    
         elif event.type == pygame.QUIT:
-            dancing(out)
+            if not(isAlreadyOut):
+                dancing(out)
+
             running2 = False
             running3 = False
     
@@ -210,8 +217,8 @@ while(running2):
             right = motion3R
 
         elif dancingType == 5:
-            left = motion4
-            right = motion4
+            left = motion4L
+            right = motion4R
         
         #need more frame
         elif dancingType == 6:
@@ -221,11 +228,19 @@ while(running2):
     #making arisu dancing
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT or event.key == pygame.K_a:
+                isAlreadyOut = False
                 dancing(left)
+
+                if dancingType == 3:
+                    dType3Dir = 1
             
-            elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:           
-                dancing(right)      
-            
+            elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:     
+                isAlreadyOut = False      
+                dancing(right)    
+
+                if dancingType == 3:
+                    dType3Dir = 0
+
             elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                 if toggle:
                     toggle = False
@@ -233,14 +248,22 @@ while(running2):
                     toggle = True
 
     if toggle:
-        dancing(left)
+        if dancingType == 3:
+            if dType3Dir:
+                dancing(left)
+            else:
+                dancing(right)
 
-        start = time.time()
-        while(True):
-            if time.time() - start > 0.02:
-                break
+        else:
+            dancing(left)
 
-        dancing(right)
+            if dancingType != 6:
+                start = time.time()
+                while(True):
+                    if time.time() - start > 0.02:
+                        break
+
+                dancing(right)
 
     if (time.time() - music_start >= 123.5):
         dancing(out)
@@ -248,9 +271,14 @@ while(running2):
 
 running = True
 screen.fill((0,0,0))
+txt2 = ScreenTxt("End!")
+txt2.show()
 pygame.display.update()
 
 while(running3):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            running3 = False
+        
+        elif event.type == pygame.KEYDOWN:
             running3 = False
