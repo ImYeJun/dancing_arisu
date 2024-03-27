@@ -268,7 +268,9 @@ while(running2):
                 dancing(right)
 
     if (time.time() - music_start >= 123.5):
-        dancing(out)
+        if not(isAlreadyOut):
+            dancing(out)
+        
         running2 = False
         screen.fill((0,0,0))
         txt2 = ScreenTxt("End!")
