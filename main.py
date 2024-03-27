@@ -188,8 +188,10 @@ while(running2):
                 dancingType = 6
 
             elif event.key == pygame.K_SPACE:
-                isAlreadyOut = True
-                dancing(out)
+                if not(isAlreadyOut):
+                    toggle = 0
+                    isAlreadyOut = True
+                    dancing(out)
 
         #stop arisu dancing    
         elif event.type == pygame.QUIT:
