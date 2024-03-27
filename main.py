@@ -163,7 +163,7 @@ while(running1):
 dancingType = 1
 toggle = False
 isAlreadyOut = False
-dType3Dir = 1
+dType3Dir = 1 
 
 while(running2):
     #select dancing type
@@ -188,8 +188,10 @@ while(running2):
                 dancingType = 6
 
             elif event.key == pygame.K_SPACE:
-                isAlreadyOut = True
-                dancing(out)
+                if not(isAlreadyOut):
+                    toggle = 0
+                    isAlreadyOut = True
+                    dancing(out)
 
         #stop arisu dancing    
         elif event.type == pygame.QUIT:
@@ -268,12 +270,10 @@ while(running2):
     if (time.time() - music_start >= 123.5):
         dancing(out)
         running2 = False
-
-running = True
-screen.fill((0,0,0))
-txt2 = ScreenTxt("End!")
-txt2.show()
-pygame.display.update()
+        screen.fill((0,0,0))
+        txt2 = ScreenTxt("End!")
+        txt2.show()
+        pygame.display.update()
 
 while(running3):
     for event in pygame.event.get():
