@@ -244,6 +244,8 @@ while(running2):
                     dType3Dir = 0
 
             elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                isAlreadyOut = False
+                
                 if toggle:
                     toggle = False
                 else:
