@@ -16,3 +16,5 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LCTRL:
                 print(str(pygame.scrap.get(pygame.SCRAP_TEXT))[2:-1])
+
+                #sdlads
