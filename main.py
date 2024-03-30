@@ -126,8 +126,8 @@ bgmAry = [["bgm/Usagi Flap.mp3", 124],
           ["bgm/Bunny Bunny Carrot Carrot.mp3", 113],
           ["bgm/After School Dessert.mp3", 121],
           ["bgm/Shooting Athletes.mp3", 118],
-          ["bgm/Signal of Abydos.mp3", 113]
-          ]
+          ["bgm/Signal of Abydos.mp3", 113],
+          ["bgm/NONE.mp3",None]]
 
 def dancing(ary):   
     if ary == None:
@@ -189,9 +189,10 @@ while(running1):
     txt4.show()
     pygame.display.update()
 
-bgm = pygame.mixer.Sound(bgmAry[bgmType][0])
-bgm.set_volume(0.5)
-bgm.play()
+if (bgmAry[bgmType][1] != None):
+    bgm = pygame.mixer.Sound(bgmAry[bgmType][0])
+    bgm.set_volume(0.5)
+    bgm.play()
 
 dancingType = 1
 toggle = False
@@ -329,7 +330,7 @@ while(running2):
 
             dancing(right)
 
-    if (time.time() - music_start >= bgmAry[bgmType][1]):
+    if (bgmAry[bgmType][1] != None) and (time.time() - music_start >= bgmAry[bgmType][1]):
         if not(isAlreadyOut):
             dancing(out)
         

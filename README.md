@@ -21,4 +21,10 @@
   2. made dancing_motion folder
 
 - version_2.2
+
   1.  split motion5 to motion5L and motion5R
+
+- version_2.3
+
+  1.  add motion6L, motion6R, motion7L and motion 7R
+  2.  possible to start dacning without music by selecting NONE when choosing bgm
