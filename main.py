@@ -115,6 +115,10 @@ motion4L = [ScreenImg(f"dancing_motion/motion4L/img/11zon_{i}.jpeg") for i in ra
 motion4R = [ScreenImg(f"dancing_motion/motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
 motion5L = [ScreenImg(f"dancing_motion/motion5L/img/11zon_{i}.jpeg") for i in range(1,64+1)]
 motion5R = [ScreenImg(f"dancing_motion/motion5R/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion6L = [ScreenImg(f"dancing_motion/motion6L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion6R = [ScreenImg(f"dancing_motion/motion6R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion7L = [ScreenImg(f"dancing_motion/motion7L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion7R = [ScreenImg(f"dancing_motion/motion7R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
 out = [ScreenImg(f"dancing_motion/out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
 
 #declare bgm ary
@@ -219,6 +223,12 @@ while(running2):
             elif event.key == pygame.K_6:
                 dancingType = 6
 
+            elif event.key == pygame.K_7:
+                dancingType = 7
+
+            elif event.key == pygame.K_8:
+                dancingType = 8
+
             elif event.key == pygame.K_SPACE:
                 if not(isAlreadyOut):
                     toggle = 0
@@ -257,6 +267,14 @@ while(running2):
         elif dancingType == 6:
             left = motion5L
             right = motion5R
+        
+        elif dancingType == 7:
+            left = motion6L
+            right = motion6R
+
+        elif dancingType == 8:
+            left = motion7L
+            right = motion7R
 
     #making arisu dancing
         if event.type == pygame.KEYDOWN:
