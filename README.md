@@ -19,3 +19,6 @@
      - Signal of Adydos
 
   2. made dancing_motion folder
+
+- version_2.2
+  1.  split motion5 to motion5L and motion5R

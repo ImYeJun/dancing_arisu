@@ -113,7 +113,8 @@ motion3L = [ScreenImg(f"dancing_motion/motion3L/img/11zon_{i}.jpeg") for i in ra
 motion3R = [ScreenImg(f"dancing_motion/motion3R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
 motion4L = [ScreenImg(f"dancing_motion/motion4L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
 motion4R = [ScreenImg(f"dancing_motion/motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion5 = [ScreenImg(f"dancing_motion/motion5/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion5L = [ScreenImg(f"dancing_motion/motion5L/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion5R = [ScreenImg(f"dancing_motion/motion5R/img/11zon_{i}.jpeg") for i in range(1,64+1)]
 out = [ScreenImg(f"dancing_motion/out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
 
 #declare bgm ary
@@ -190,8 +191,9 @@ bgm.play()
 
 dancingType = 1
 toggle = False
-isAlreadyOut = False
+isAlreadyOut = True
 dType3Dir = 1 
+dType6Dir = 1 
 screen.fill((0,0,0))
 pygame.display.update()
 
@@ -253,8 +255,8 @@ while(running2):
             right = motion4R
         
         elif dancingType == 6:
-            left = motion5
-            right = motion5
+            left = motion5L
+            right = motion5R
 
     #making arisu dancing
         if event.type == pygame.KEYDOWN:
@@ -264,6 +266,9 @@ while(running2):
 
                 if dancingType == 3:
                     dType3Dir = 1
+                
+                elif dancingType == 6:
+                    dType6Dir = 1
             
             elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:     
                 isAlreadyOut = False      
@@ -271,6 +276,9 @@ while(running2):
 
                 if dancingType == 3:
                     dType3Dir = 0
+                
+                elif dancingType == 6:
+                    dType6Dir = 0
 
             elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
                 isAlreadyOut = False
@@ -287,16 +295,21 @@ while(running2):
             else:
                 dancing(right)
 
+        elif dancingType == 6:
+            if dType6Dir:
+                dancing(left)
+            else:
+                dancing(right)
+
         else:
             dancing(left)
 
-            if dancingType != 6:
-                start = time.time()
-                while(True):
-                    if time.time() - start > 0.02:
-                        break
+            start = time.time()
+            while(True):
+                if time.time() - start > 0.02:
+                    break
 
-                dancing(right)
+            dancing(right)
 
     if (time.time() - music_start >= bgmAry[bgmType][1]):
         if not(isAlreadyOut):
