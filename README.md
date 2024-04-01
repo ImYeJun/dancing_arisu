@@ -41,3 +41,5 @@
 1.  Because the program continuously recognizes you are pressing the key, if you press key too fast, arisu will keep dancing even if you didn't press key.
 
 ### taste the super cuteness of **tendo arisu!**
+
+![](https://i.namu.wiki/i/ED961xLR-1YamVea92l8wyEzfJIfNtv76UBctiGlOLQ7q94-C0l7nkyXgiivQ_695kSsI0bdhJ70G2q-sgYmwlTU2IFCibQglOGcO6yioei3Foc9IGlYabzrwH2ZKnP8mctiKKYtn7oS37hSxxWEJg.webp)
