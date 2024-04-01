@@ -35,11 +35,11 @@ when i saw this video, i was addicted to her dancing. when i commute to school, 
 
 1.  you can choose 8 dancing motion by pressing 1 ~ 8 number key
 
-2.  you can make her dance by pressing left,right or down direction keys
+2.  you can make her dance by pressing left(A),right(D) or down direction(S) keys
 
-    - left direction key : dancing toward left direction
-    - right direction key : dancing toward right direction
-    - down direction key (toggle) : keep her dancing
+    - left direction key (A) : dancing toward left direction
+    - right direction key (D): dancing toward right direction
+    - down direction key (S) (toggle) : keep her dancing
 
 3.  when press the space bar, arisu goes out from the window
 
