@@ -42,4 +42,6 @@
 
 ### taste the super cuteness of **tendo arisu!**
 
+### click under img!
+
 [![미리보기](https://img.youtube.com/vi/4t3tLq1GIIE/0.jpg)](https://www.youtube.com/watch?v=4t3tLq1GIIE)
