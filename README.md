@@ -2,6 +2,13 @@
 
 **_make arisu dance!_**
 
+### why I made this?
+
+[![미리보기](https://img.youtube.com/vi/T9F1Wk8DQdg/0.jpg)](https://www.youtube.com/watch?v=T9F1Wk8DQdg&t)
+_(click above the img!)_
+
+when i saw this video, i was addicted to her dancing. when i commute to school, I always see this video!! Suddenly, I wanted to make arisu dance by myself and see her dancing in another song!! so I made this program.
+
 ### how to play?
 
 #### 1. get start!
