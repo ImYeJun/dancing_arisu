@@ -103,21 +103,31 @@ class ScreenTxt:
                 screen.blit(self.object,self.pos_object)
 
 #declare img ary
-basicL = [ScreenImg(f"basicL/img/11zon_{i}.jpeg") for i in range(1,13+1)]
-basicR = [ScreenImg(f"basicR/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion1L = [ScreenImg(f"motion1L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion1R = [ScreenImg(f"motion1R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion2L = [ScreenImg(f"motion2L/img/11zon_{i}.jpeg") for i in range(5,15+1)]
-motion2R = [ScreenImg(f"motion2R/img/11zon_{i}.jpeg") for i in range(5,15+1)]
-motion3L = [ScreenImg(f"motion3L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion3R = [ScreenImg(f"motion3R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion4L = [ScreenImg(f"motion4L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion4R = [ScreenImg(f"motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion5 = [ScreenImg(f"motion5/img/11zon_{i}.jpeg") for i in range(1,64+1)]
-out = [ScreenImg(f"out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
+basicL = [ScreenImg(f"dancing_motion/basicL/img/11zon_{i}.jpeg") for i in range(1,13+1)]
+basicR = [ScreenImg(f"dancing_motion/basicR/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion1L = [ScreenImg(f"dancing_motion/motion1L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion1R = [ScreenImg(f"dancing_motion/motion1R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion2L = [ScreenImg(f"dancing_motion/motion2L/img/11zon_{i}.jpeg") for i in range(5,15+1)]
+motion2R = [ScreenImg(f"dancing_motion/motion2R/img/11zon_{i}.jpeg") for i in range(5,15+1)]
+motion3L = [ScreenImg(f"dancing_motion/motion3L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion3R = [ScreenImg(f"dancing_motion/motion3R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion4L = [ScreenImg(f"dancing_motion/motion4L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion4R = [ScreenImg(f"dancing_motion/motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion5L = [ScreenImg(f"dancing_motion/motion5L/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion5R = [ScreenImg(f"dancing_motion/motion5R/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion6L = [ScreenImg(f"dancing_motion/motion6L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion6R = [ScreenImg(f"dancing_motion/motion6R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion7L = [ScreenImg(f"dancing_motion/motion7L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion7R = [ScreenImg(f"dancing_motion/motion7R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+out = [ScreenImg(f"dancing_motion/out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
 
-usagiFlap = pygame.mixer.Sound("usagi flap.mp3")
-usagiFlap.set_volume(0.5)
+#declare bgm ary
+bgmAry = [["bgm/Usagi Flap.mp3", 124],
+          ["bgm/Bunny Bunny Carrot Carrot.mp3", 113],
+          ["bgm/After School Dessert.mp3", 121],
+          ["bgm/Shooting Athletes.mp3", 118],
+          ["bgm/Signal of Abydos.mp3", 113],
+          ["bgm/NONE.mp3",None]]
 
 def dancing(ary):   
     if ary == None:
@@ -135,35 +145,62 @@ def dancing(ary):
                 if (time.time()- start) > 0.03:
                     break
 
-txt1 = ScreenTxt("Press Any Key to Start!")
-txt1.show()
-pygame.display.update()
-
+txt1 = ScreenTxt("Press Space to Start!",pos_y = size_y /2 + 50)
+txt2 = ScreenTxt("<change bgm by left and right key>",pos_y= size_y/2 + 80,size = 20)
+txt3 = ScreenTxt("(select bgm)",pos_y = size_y / 2 - 50)
 running1 = True
 running2 = True
 running3 = True
+bgmType = 0
+bgmName = bgmAry[bgmType][0][4:-4]
+txt4 = ScreenTxt(bgmName,pos_y = size_y / 2 - 20,size = 25)
 
 while(running1):
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            running = False
+            if event.key == pygame.K_SPACE:
+                running = False
 
-            screen.fill((0,0,0))
-            pygame.display.update()
+                screen.fill((0,0,0))
+                pygame.display.update()
 
-            usagiFlap.play()
-            music_start = time.time()
-            running1 = False
+                music_start = time.time()
+                running1 = False
+
+            elif event.key == pygame.K_LEFT and bgmType > 0:
+                bgmType -= 1
+                bgmName = bgmAry[bgmType][0][4:-4]
+                txt4.value = bgmName
+
+            elif event.key == pygame.K_RIGHT and bgmType < len(bgmAry) - 1:
+                bgmType += 1
+                bgmName = bgmAry[bgmType][0][4:-4]
+                txt4.value = bgmName
 
         elif event.type == pygame.QUIT:
             running1 = False
             running2 = False
             running3 = False
 
+    screen.fill((0,0,0))
+    txt1.show()
+    txt2.show()
+    txt3.show()
+    txt4.show()
+    pygame.display.update()
+
+if (bgmAry[bgmType][1] != None):
+    bgm = pygame.mixer.Sound(bgmAry[bgmType][0])
+    bgm.set_volume(0.5)
+    bgm.play()
+
 dancingType = 1
 toggle = False
-isAlreadyOut = False
-dType3Dir = 1
+isAlreadyOut = True
+dType3Dir = 1 
+dType6Dir = 1 
+screen.fill((0,0,0))
+pygame.display.update()
 
 while(running2):
     #select dancing type
@@ -186,6 +223,12 @@ while(running2):
 
             elif event.key == pygame.K_6:
                 dancingType = 6
+
+            elif event.key == pygame.K_7:
+                dancingType = 7
+
+            elif event.key == pygame.K_8:
+                dancingType = 8
 
             elif event.key == pygame.K_SPACE:
                 if not(isAlreadyOut):
@@ -222,10 +265,17 @@ while(running2):
             left = motion4L
             right = motion4R
         
-        #need more frame
         elif dancingType == 6:
-            left = motion5
-            right = motion5
+            left = motion5L
+            right = motion5R
+        
+        elif dancingType == 7:
+            left = motion6L
+            right = motion6R
+
+        elif dancingType == 8:
+            left = motion7L
+            right = motion7R
 
     #making arisu dancing
         if event.type == pygame.KEYDOWN:
@@ -235,6 +285,9 @@ while(running2):
 
                 if dancingType == 3:
                     dType3Dir = 1
+                
+                elif dancingType == 6:
+                    dType6Dir = 1
             
             elif event.key == pygame.K_RIGHT or event.key == pygame.K_d:     
                 isAlreadyOut = False      
@@ -242,8 +295,13 @@ while(running2):
 
                 if dancingType == 3:
                     dType3Dir = 0
+                
+                elif dancingType == 6:
+                    dType6Dir = 0
 
             elif event.key == pygame.K_DOWN or event.key == pygame.K_s:
+                isAlreadyOut = False
+                
                 if toggle:
                     toggle = False
                 else:
@@ -256,26 +314,31 @@ while(running2):
             else:
                 dancing(right)
 
+        elif dancingType == 6:
+            if dType6Dir:
+                dancing(left)
+            else:
+                dancing(right)
+
         else:
             dancing(left)
 
-            if dancingType != 6:
-                start = time.time()
-                while(True):
-                    if time.time() - start > 0.02:
-                        break
+            start = time.time()
+            while(True):
+                if time.time() - start > 0.02:
+                    break
 
-                dancing(right)
+            dancing(right)
 
-    if (time.time() - music_start >= 123.5):
-        dancing(out)
+    if (bgmAry[bgmType][1] != None) and (time.time() - music_start >= bgmAry[bgmType][1]):
+        if not(isAlreadyOut):
+            dancing(out)
+        
         running2 = False
-
-running = True
-screen.fill((0,0,0))
-txt2 = ScreenTxt("End!")
-txt2.show()
-pygame.display.update()
+        screen.fill((0,0,0))
+        txt2 = ScreenTxt("End!")
+        txt2.show()
+        pygame.display.update()
 
 while(running3):
     for event in pygame.event.get():
@@ -284,3 +347,5 @@ while(running3):
         
         elif event.type == pygame.KEYDOWN:
             running3 = False
+
+
