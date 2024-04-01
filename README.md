@@ -42,4 +42,4 @@
 
 ### taste the super cuteness of **tendo arisu!**
 
-![](https://i.namu.wiki/i/ED961xLR-1YamVea92l8wyEzfJIfNtv76UBctiGlOLQ7q94-C0l7nkyXgiivQ_695kSsI0bdhJ70G2q-sgYmwlTU2IFCibQglOGcO6yioei3Foc9IGlYabzrwH2ZKnP8mctiKKYtn7oS37hSxxWEJg.webp)
+[![미리보기](https://img.youtube.com/vi/4t3tLq1GIIE/0.jpg)](https://www.youtube.com/watch?v=4t3tLq1GIIE)
