@@ -1,5 +1,6 @@
 import pygame
 import time
+
 pygame.init()
 
 size_x = 338
@@ -7,7 +8,7 @@ size_y = 338
 
 screen = pygame.display.set_mode((size_x,size_y))
 pygame.display.set_caption("Dancing Arisu!")
-pygame_icon = pygame.image.load("icon.png")
+pygame_icon = pygame.image.load('./dancing_arisu/icon.png')
 pygame.display.set_icon(pygame_icon)
 
 #load img,easy to show
@@ -28,7 +29,7 @@ class ScreenImg:
             self.pos_object =  self.object.get_rect()
             self.pos_object.x = self.pos_x
             self.pos_object.y = self.pos_y
-               
+
     def show(self):
         self.value = self.value
         self.pos_x = self.pos_x
@@ -97,37 +98,36 @@ class ScreenTxt:
                 self.pos_object.y = self.pos_y
 
             if self.pos_central == True:
-
                 screen.blit(self.object,self.pos_object)
             elif self.pos_central == False:
                 screen.blit(self.object,self.pos_object)
 
 #declare img ary
-basicL = [ScreenImg(f"dancing_motion/basicL/img/11zon_{i}.jpeg") for i in range(1,13+1)]
-basicR = [ScreenImg(f"dancing_motion/basicR/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion1L = [ScreenImg(f"dancing_motion/motion1L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion1R = [ScreenImg(f"dancing_motion/motion1R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion2L = [ScreenImg(f"dancing_motion/motion2L/img/11zon_{i}.jpeg") for i in range(5,15+1)]
-motion2R = [ScreenImg(f"dancing_motion/motion2R/img/11zon_{i}.jpeg") for i in range(5,15+1)]
-motion3L = [ScreenImg(f"dancing_motion/motion3L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion3R = [ScreenImg(f"dancing_motion/motion3R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion4L = [ScreenImg(f"dancing_motion/motion4L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion4R = [ScreenImg(f"dancing_motion/motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion5L = [ScreenImg(f"dancing_motion/motion5L/img/11zon_{i}.jpeg") for i in range(1,64+1)]
-motion5R = [ScreenImg(f"dancing_motion/motion5R/img/11zon_{i}.jpeg") for i in range(1,64+1)]
-motion6L = [ScreenImg(f"dancing_motion/motion6L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion6R = [ScreenImg(f"dancing_motion/motion6R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
-motion7L = [ScreenImg(f"dancing_motion/motion7L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-motion7R = [ScreenImg(f"dancing_motion/motion7R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
-out = [ScreenImg(f"dancing_motion/out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
+basicL = [ScreenImg(f"dancing_arisu/dancing_motion/basicL/img/11zon_{i}.jpeg") for i in range(1,13+1)]
+basicR = [ScreenImg(f"dancing_arisu/dancing_motion/basicR/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion1L = [ScreenImg(f"dancing_arisu/dancing_motion/motion1L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion1R = [ScreenImg(f"dancing_arisu/dancing_motion/motion1R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion2L = [ScreenImg(f"dancing_arisu/dancing_motion/motion2L/img/11zon_{i}.jpeg") for i in range(5,15+1)]
+motion2R = [ScreenImg(f"dancing_arisu/dancing_motion/motion2R/img/11zon_{i}.jpeg") for i in range(5,15+1)]
+motion3L = [ScreenImg(f"dancing_arisu/dancing_motion/motion3L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion3R = [ScreenImg(f"dancing_arisu/dancing_motion/motion3R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion4L = [ScreenImg(f"dancing_arisu/dancing_motion/motion4L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion4R = [ScreenImg(f"dancing_arisu/dancing_motion/motion4R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion5L = [ScreenImg(f"dancing_arisu/dancing_motion/motion5L/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion5R = [ScreenImg(f"dancing_arisu/dancing_motion/motion5R/img/11zon_{i}.jpeg") for i in range(1,64+1)]
+motion6L = [ScreenImg(f"dancing_arisu/dancing_motion/motion6L/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion6R = [ScreenImg(f"dancing_arisu/dancing_motion/motion6R/img/11zon_{i}.jpeg") for i in range(1,6+1)]
+motion7L = [ScreenImg(f"dancing_arisu/dancing_motion/motion7L/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+motion7R = [ScreenImg(f"dancing_arisu/dancing_motion/motion7R/img/11zon_{i}.jpeg") for i in range(1,12+1)]
+out = [ScreenImg(f"dancing_arisu/dancing_motion/out/img/11zon_{i}.jpeg") for i in range(1,44+1)]
 
 #declare bgm ary
-bgmAry = [["bgm/Usagi Flap.mp3", 124],
-          ["bgm/Bunny Bunny Carrot Carrot.mp3", 113],
-          ["bgm/After School Dessert.mp3", 121],
-          ["bgm/Shooting Athletes.mp3", 118],
-          ["bgm/Signal of Abydos.mp3", 113],
-          ["bgm/NONE.mp3",None]]
+bgmAry = [["dancing_arisu/bgm/Usagi Flap.mp3", 124],
+          ["dancing_arisu/bgm/Bunny Bunny Carrot Carrot.mp3", 113],
+          ["dancing_arisu/bgm/After School Dessert.mp3", 121],
+          ["dancing_arisu/bgm/Shooting Athletes.mp3", 118],
+          ["dancing_arisu/bgm/Signal of Abydos.mp3", 113],
+          ["dancing_arisu/bgm/NONE.mp3",None]]
 
 def dancing(ary):   
     if ary == None:
